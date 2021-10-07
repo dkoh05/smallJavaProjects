@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class SumRowX {
 	static int calcSumRow(int x, int[][] arr) {
-		// var sumResult = 0
-		// loop i from 0 to i>arr.length
-		// sumResult = arr[i][x] + arr[i][x+1]
+		int sumResult = 0;
+		for(int i = 0;i<arr[x].length;i++) {
+			sumResult = sumResult + arr[x][i];
+		}
+		return sumResult;
 	}
 	public static void main(String[] arg) {
 		System.out.print("Enter 2D array size: ");
