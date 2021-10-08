@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class SumColumnX {
 	static int calcSumColumn(int x, int[][] arr) {
         int sumResult = 0;
-        for(int i=0;i<x;i++){
+        for(int i=0;i<arr.length;i++){
             sumResult = sumResult + arr[i][x];
         }
 		return sumResult;
