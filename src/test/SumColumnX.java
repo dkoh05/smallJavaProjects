@@ -1,6 +1,8 @@
 package test;
 
 import java.util.Scanner;
+// Write a method
+// that returns the sum of the elements in Column x of 2d array
 
 public class SumColumnX {
 	static int calcSumColumn(int x, int[][] arr) {
