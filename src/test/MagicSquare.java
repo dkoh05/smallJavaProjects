@@ -7,7 +7,7 @@ import java.util.Scanner;
 //This means that it must be square, and that all row sums, all column sums, and the two diagonal-sums must all be equal.
 
 public class MagicSquare {
-	static int calcSumColumn(int x, int[][] arr) {
+	static int calcSumColumn(int x, int[][] arr) { 
         int sumResult = 0;
         for(int i=0;i<arr.length;i++){
             sumResult = sumResult + arr[i][x];
@@ -22,23 +22,28 @@ public class MagicSquare {
 		}
 		return sumResult;
 	}
-	public static int calcDiagonalSum(int x, int[][] a) {
+	static int calcDiagonalSum(int[][] arr) {
 		int sumResult = 0;
-		for (int i = 0; i < a.length; i++) {
-			for (int j = 0; j < a[i].length; j++) {
-				if(i == j) {
-					sumResult = sumResult + a[i][j];
-				}
-			}
+		for (int i = 0; i < arr.length; i++) {
+			sumResult = sumResult + arr[i][i];
 		}
 		return sumResult;
 	}
+	static int calcDiagonalSum2(int[][] arr) {
+		int sumResult = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sumResult = sumResult + arr[i][arr.length-i-1];
+		}
+		return sumResult;
+	}
+	
+	
 	static boolean isMagicSquare(int[][] arr) {
 		int sum = calcSumColumn(0,arr);
-		for(int i = 0;i < arr.length;i++) {
+		for(int i = 0;i < arr.length;i++) { 
 			int sumColumn = calcSumColumn(i, arr);
 			System.out.println(sumColumn);
-			if(sum != sumColumn) {
+			if(sum != sumColumn) { 
 				return false;
 			}
 		}
@@ -49,12 +54,15 @@ public class MagicSquare {
 				return false;
 			}
 		}
-		for(int i = 0; i<arr.length;i++) {
-			int sumDiagonals = calcDiagonalSum(i, arr);
-			System.out.println(sumDiagonals);
-			if(sum != sumDiagonals) {
-				return false;
-			}
+		int sumDiagonals = calcDiagonalSum(arr);
+		System.out.println(sumDiagonals);
+		if (sum != sumDiagonals) {
+			return false;
+		}
+		int sumDiagonals2 = calcDiagonalSum2(arr);
+		System.out.println(sumDiagonals2);
+		if (sum != sumDiagonals2) {
+			return false;
 		}
 		return true;
 	}
