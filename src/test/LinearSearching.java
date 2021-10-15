@@ -1,6 +1,6 @@
 package test;
 
-import java.util.Scanner;
+import java.util.Scanner;  
 
 public class LinearSearching {
 	static boolean sequentialSearch(int[] arr, int x) {
