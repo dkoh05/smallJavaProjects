@@ -4,15 +4,14 @@ import java.util.Scanner;
 
 public class LinearSearching {
 	static boolean sequentialSearch(int[] arr, int x) {
-		boolean flag = false;
 		for(int i = 0;i<arr.length;i++) {
 			if (arr[i] == x) {
-				flag = true;
 				System.out.println(arr[i] + " found at position " + i);
+				return true;
 			}
 		}
 		System.out.println(x + " not found");
-		return flag;
+		return false;
 	}
 	public static void main(String[] arg) {
 		System.out.print("Enter array size: ");
