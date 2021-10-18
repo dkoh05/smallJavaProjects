@@ -7,10 +7,10 @@ public class BinarySearching {
 		int left = 0;
 		int right = arr.length-1;
 		while(left <= right) {
-			int mid = ((left+ right) /2);
+			int mid = ((left+ right)/2); 
 			if(arr[mid] == x) {
 				return true;
-			} else if(x < arr[mid]) {
+			} else if(x < arr[mid]) { // checks if the searching value is less than the mid value
 				right = mid - 1;
 			} else {
 				left = mid + 1;
@@ -34,6 +34,7 @@ public class BinarySearching {
 		System.out.println(result);
 	}
 }
+
 
 
 
