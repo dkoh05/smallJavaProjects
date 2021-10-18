@@ -4,29 +4,19 @@ import java.util.Scanner;
 
 public class BinarySearching {
 	static boolean isBinarySearch(int[] arr, int x) {
-		int min = 0;
-		int high = arr.length;
-		boolean flag = false;
-		int answer = 0;
-		int mid;
-		while(flag && (min < high)) {
-			mid = ((min + high) /2);
+		int left = 0;
+		int right = arr.length-1;
+		while(left <= right) {
+			int mid = ((left+ right) /2);
 			if(arr[mid] == x) {
-				flag = true;
-				answer = mid;
-			} else if(x > arr[mid]) {
-				min = mid + 1;
+				return true;
+			} else if(x < arr[mid]) {
+				right = mid - 1;
 			} else {
-				high = mid -1;
+				left = mid + 1;
 			}
 		}
-		if(flag = true) {
-			System.out.println(x + " found at array index " + answer);
-			return flag;
-		} else {
-			System.out.println(x + " was not found");
-			return flag;
-		}
+		return false;
 	}
 	public static void main(String[] arg) {
 		System.out.print("Enter array size: ");
