@@ -6,18 +6,21 @@ import java.util.Scanner;
 public class bubbleSort {
 	static int[] bubble(int[] arr) {
 		boolean flag = false;
+		int decrement = arr.length - 1;
 		while(!flag) {
 			flag = true;
-			for(int i = 0;i<arr.length - 1;i++) {
-				if(arr[i] > arr[i+1]) {
+			for(int i = 0;i<decrement;i++) {
+				if(arr[i] < arr[i+1]) {
 					int temp = arr[i];
 					arr[i] = arr[i+1];
 					arr[i+1] = temp;
 					flag = false;
 				}
 			}
+			decrement--;
 		}
 		return arr;
+		
 	}
 	public static void main(String[] arg) {
 		System.out.print("Enter array size: ");
