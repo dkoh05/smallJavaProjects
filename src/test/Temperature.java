@@ -2,7 +2,7 @@ package test;
 
 // enter four cities, and then for each city, enter the highest and lowest temperature of the day
 // the program then calculates the upper and lower bounds of temperatures
-// it will then print out any city's temperatures that are above the upper temperature or lower than the lower temperature
+// it will then print out any city's temperatures that are above the upper temperature or lower than the lower temperature																		
 
 import java.util.Iterator;
 import java.util.Collections;
