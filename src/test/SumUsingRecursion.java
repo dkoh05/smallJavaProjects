@@ -11,13 +11,10 @@ public class SumUsingRecursion {
 		return newArr;
 	}
 	static int sum(int[] arr) {
-		int rArr = sum(restOfArr(arr));
-		int total = 0;
 		if(arr.length == 0) {
-			return total;
+			return 0;
 		}
-		total = arr[0] + rArr;
-		return total;
+		return arr[0] + sum(restOfArr(arr));
 	}
 
 	public static void main(String[] args) {
@@ -30,7 +27,6 @@ public class SumUsingRecursion {
 			arr[j] = scanner.nextInt();
 		}
 		scanner.close();
-		System.out.println(Arrays.toString(arr));
 		int result = sum(arr);
 		System.out.println(result);
 	}
