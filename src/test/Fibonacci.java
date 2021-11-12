@@ -22,3 +22,27 @@ public class Fibonacci {
 	}
 
 }
+
+
+input x = 4
+
+function calcFib(4)
+base case // false
+return 2 + 1 = 3
+
+calcFib(3)
+base case // false
+return 1 + 1 = 2
+
+
+calcFib(2)
+base case // true
+return 1
+
+calcFib(1)
+base case // true
+return 1
+
+calcFib(2)
+base case // true
+return 1
