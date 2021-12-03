@@ -21,6 +21,5 @@ public class RemoveDuplicates {
 		int[] arr = new int[] {1,1,1,1,1,2,2,2,2,7,9,9,10};
 		ArrayList<Integer> result = removeDupe(arr);
 		System.out.println(result);
-		
 	}
 }
