@@ -2,7 +2,6 @@ package test;
 
 // to do list
 // implement the optional extras 
-// put the isCorrectBoolean into a method
 
 import java.util.*;
 import java.util.Random;
@@ -15,11 +14,11 @@ public class Quiz {
 		System.out.print("Username: "); 
 		return username; 
 	}
-	// easy Q&A method
-	static int easyQA(String[] easyQuestions, boolean[] easyAnswers, int totalScore) {
+	// question and answer method
+	static int QandA(String[] questions, boolean[] answers, int totalScore) {
 		Scanner scanner = new Scanner(System.in);
 		for(int i = 0;i<5;i++) { // loop through the 5 questions
-			System.out.print(easyQuestions[i]);
+			System.out.print(questions[i]);
 			boolean answerInput = false;
 		    Boolean repeat = true;
 		    while(repeat) { // repeat until valid input
@@ -32,39 +31,7 @@ public class Quiz {
 			          repeat = true;
 			      }
 			}
-		    if(answerInput == easyAnswers[i]) { // check if user answer is same as real answer
-		    	totalScore += 2;
-		    }
-		    
-			System.out.println("Do you want to quit the quiz? [Y to quit, any other key to continue]");
-			scanner.nextLine(); // buffer to read the "Enter" after the previous input
-			String isQuit = scanner.nextLine().toUpperCase(); // reads the Enter
-			if(isQuit.equals("Y")) {
-				break;
-			}
-		}
-		System.out.println("You have finished the quiz!");
-		System.out.print("Total Score: ");
-		return totalScore;
-	}
-	// hard Q&A method
-	static int hardQA(String[] hardQuestions, boolean[] hardAnswers, int totalScore) {
-		Scanner scanner = new Scanner(System.in);
-		for(int i = 0;i<5;i++) { // loop through the 5 questions
-			System.out.print(hardQuestions[i]);
-			boolean answerInput = false;
-		    Boolean repeat = true;
-		    while(repeat) { // repeat until valid input
-			      try {
-			        answerInput = scanner.nextBoolean();
-			        repeat = false; // set repeat = false if there is a valid input
-			      } catch(InputMismatchException e) { // catch the error message
-			          System.out.println("Invalid input, please enter again.");
-			          scanner.next();   // read the buffer after nextBoolean
-			          repeat = true;
-			      }
-			}
-		    if(answerInput == hardAnswers[i]) { // check if user answer is same as real answer
+		    if(answerInput == answers[i]) { // check if user answer is same as real answer
 		    	totalScore += 2;
 		    }
 		    
@@ -125,13 +92,13 @@ public class Quiz {
 			System.out.println("Would you like easy or hard questions? [e/h]");
 			String isDifficulty = scanner.next().toLowerCase(); 
 			if(isDifficulty.equals("e")) {
-				 int outputEasy= easyQA(easyQuestions, easyAnswers, totalScore);
-				 System.out.println(outputEasy);
-				 scoresArr.add(outputEasy);
+				 int outputEasy= QandA(easyQuestions, easyAnswers, totalScore);
+				 System.out.println(outputEasy); // print out totalScore
+				 scoresArr.add(outputEasy); // add the score into the array
 				 String gradeOutput = gradingSystem(totalScore);
-				 System.out.println(gradeOutput);
+				 System.out.println(gradeOutput); // print out user's grades
 			} else {
-				 int outputHard= hardQA(hardQuestions, hardAnswers, totalScore);
+				 int outputHard= QandA(hardQuestions, hardAnswers, totalScore);
 				 System.out.println(outputHard);
 				 scoresArr.add(outputHard);
 				 String gradeOutput = gradingSystem(totalScore);
@@ -149,10 +116,6 @@ public class Quiz {
 		for(int i = 0;i<usernamesArr.size();i++) {
 			System.out.println("Username: " + usernamesArr.get(i) + ", total score of user: " + scoresArr.get(i));
 		}
-		
-		
-		
-		
 	}
 
 }
