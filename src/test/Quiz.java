@@ -15,7 +15,8 @@ public class Quiz {
 		return username; 
 	}
 	// question and answer method
-	static int QandA(String[] questions, boolean[] answers, int totalScore) {
+	static int QandA(String[] questions, boolean[] answers) {
+		int totalScore = 0;
 		Scanner scanner = new Scanner(System.in);
 		for(int i = 0;i<5;i++) { // loop through the 5 questions
 			System.out.print(questions[i]);
@@ -49,15 +50,13 @@ public class Quiz {
 	static String gradingSystem(int totalScore) {
 		// grading system
 		if(totalScore <= 2) {
-			System.out.println("Better luck next time!");
+			System.out.println("You got a grade of D");
 		} else if(totalScore <= 4) {	
 			System.out.println("You got a grade of C");
 		} else if(totalScore <= 6) {
 			System.out.println("You got a grade of B");
-		} else if(totalScore <= 8 && totalScore >= 10) {
+		} else if(totalScore >= 8 && totalScore <=10) {
 			System.out.println("You got a grade of A");
-		} else {
-			System.out.println("You can do better next time! ");
 		}
 		return "";
 	}
@@ -92,16 +91,16 @@ public class Quiz {
 			System.out.println("Would you like easy or hard questions? [e/h]");
 			String isDifficulty = scanner.next().toLowerCase(); 
 			if(isDifficulty.equals("e")) {
-				 int outputEasy= QandA(easyQuestions, easyAnswers, totalScore);
+				 int outputEasy= QandA(easyQuestions, easyAnswers);
 				 System.out.println(outputEasy); // print out totalScore
 				 scoresArr.add(outputEasy); // add the score into the array
-				 String gradeOutput = gradingSystem(totalScore);
+				 String gradeOutput = gradingSystem(outputEasy);
 				 System.out.println(gradeOutput); // print out user's grades
 			} else {
-				 int outputHard= QandA(hardQuestions, hardAnswers, totalScore);
+				 int outputHard= QandA(hardQuestions, hardAnswers);
 				 System.out.println(outputHard);
 				 scoresArr.add(outputHard);
-				 String gradeOutput = gradingSystem(totalScore);
+				 String gradeOutput = gradingSystem(outputHard);
 				 System.out.println(gradeOutput);
 			}
 			// ask the user if they want to continue with a different person
