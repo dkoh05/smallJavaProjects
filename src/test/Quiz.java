@@ -1,8 +1,5 @@
 package test;
 
-// to do list
-// implement the optional extras 
-
 import java.util.*;
 import java.util.Random;
 
@@ -12,14 +9,14 @@ public class Quiz {
 		int usernameNum = rand.nextInt(999 - 100) + 100; // create a random number between 100 and 999
 		String username = name + usernameNum; // store user's name and random number concat.
 		System.out.print("Username: "); 
-		return username; 
+		return username; // print username
 	}
 	// question and answer method
-	static int QandA(String[] questions, boolean[] answers) {
-		int totalScore = 0;
+	static int QandA(String[] questions, boolean[] answers) { // parameters to include both easy & hard questions and answers
+		int totalScore = 0; // initialise a total score variable
 		Scanner scanner = new Scanner(System.in);
 		for(int i = 0;i<5;i++) { // loop through the 5 questions
-			System.out.print(questions[i]);
+			System.out.print(questions[i]); // print questions
 			boolean answerInput = false;
 		    Boolean repeat = true;
 		    while(repeat) { // repeat until valid input
@@ -28,12 +25,12 @@ public class Quiz {
 			        repeat = false; // set repeat = false if there is a valid input
 			      } catch(InputMismatchException e) { // catch the error message
 			          System.out.println("Invalid input, please enter again.");
-			          scanner.next();   // read the buffer after nextBoolean
+			          scanner.next();   // read the buffer after nextBoolean and let user input correct answer
 			          repeat = true;
 			      }
 			}
 		    if(answerInput == answers[i]) { // check if user answer is same as real answer
-		    	totalScore += 2;
+		    	totalScore += 2; 
 		    }
 		    
 			System.out.println("Do you want to quit the quiz? [Y to quit, any other key to continue]");
@@ -62,6 +59,7 @@ public class Quiz {
 	}
 
 	public static void main(String[] args) {
+		// data structure
 		String[] easyQuestions = new String[] {"Pseudo-code uses exact programming language syntax to represent a module in the larger program. [true/false]", 
 				"Digital camera is input device used to take photographs, [true/false]", "CPU stands for Central Processing Unit.[true/false]", 
 				"The language that machines can understand is called machine language. [true/false]",
@@ -73,11 +71,10 @@ public class Quiz {
 				"Except for the most simple program, one set of test data will not completely validate a program. [true/false]"};
 		boolean[] easyAnswers = new boolean[] {false, true, true, true, false}; // easy questions answers
 		boolean[] hardAnswers = new boolean[] {true, true, true, true, true}; // hard questions answers
-		ArrayList<String> usernamesArr = new ArrayList<String>(); 
-		ArrayList<Integer> scoresArr = new ArrayList<Integer>();
+		ArrayList<String> usernamesArr = new ArrayList<String>(); // stores all usernames
+		ArrayList<Integer> scoresArr = new ArrayList<Integer>(); // stores all of user's total score
 		while(true) {
 			// data structure/arrays
-			int totalScore = 0;
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Hello, welcome to the CS quiz!");
 			System.out.println("Please enter your name: ");
@@ -91,7 +88,7 @@ public class Quiz {
 			System.out.println("Would you like easy or hard questions? [e/h]");
 			String isDifficulty = scanner.next().toLowerCase(); 
 			if(isDifficulty.equals("e")) {
-				 int outputEasy= QandA(easyQuestions, easyAnswers);
+				 int outputEasy= QandA(easyQuestions, easyAnswers); // input easy questions and answers into QandA method
 				 System.out.println(outputEasy); // print out totalScore
 				 scoresArr.add(outputEasy); // add the score into the array
 				 String gradeOutput = gradingSystem(outputEasy);
@@ -113,8 +110,8 @@ public class Quiz {
 		System.out.println("----");
 		System.out.println("OPERATOR'S INFORMATION");
 		for(int i = 0;i<usernamesArr.size();i++) {
+			// print username with it's corresponding total score
 			System.out.println("Username: " + usernamesArr.get(i) + ", total score of user: " + scoresArr.get(i));
 		}
 	}
-
 }
